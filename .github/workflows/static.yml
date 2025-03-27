@@ -31,12 +31,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false # Add this line
 
-      # Add this step to create secrets.js
+      # Configure Git
+      - name: Configure Git
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+      # Create secrets.js file
       - name: Create secrets.js
         run: |
           echo "const VOUCHER_CODE = '${{ secrets.VOUCHER_CODE }}';" > secrets.js
-
+          
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
