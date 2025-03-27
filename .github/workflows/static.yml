@@ -31,6 +31,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # Add this step to create secrets.js
+      - name: Create secrets.js
+        run: |
+          echo "const VOUCHER_CODE = '${{ secrets.VOUCHER_CODE }}';" > secrets.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
