@@ -12,6 +12,36 @@ document.addEventListener('DOMContentLoaded', function() {
     knife.className = 'knife';
     cakeContainer.appendChild(knife);
     
+    // Create gift container content
+    const messagePara = document.createElement('p');
+    messagePara.textContent = "Here's a small token of our appreciation:";
+    giftContainer.appendChild(messagePara);
+    
+    // Create voucher div
+    const voucherDiv = document.createElement('div');
+    voucherDiv.className = 'voucher';
+    voucherDiv.id = 'voucherCode';
+    // Initial hidden state
+    voucherDiv.textContent = '🎁 Click to Reveal Your Gift 🎁';
+    giftContainer.appendChild(voucherDiv);
+    
+    // Create note paragraph
+    const notePara = document.createElement('p');
+    notePara.className = 'note';
+    notePara.textContent = 'Click above to reveal your Amazon voucher!';
+    giftContainer.appendChild(notePara);
+    
+    // Add click event to voucher
+    voucherDiv.addEventListener('click', function() {
+        if (!this.classList.contains('revealed')) {
+            // You can encode/decode the voucher code for additional obscurity
+            const code = atob('QU1aTi1HSUZULTI='); // Example encoded string
+            this.textContent = code;
+            this.classList.add('revealed');
+            notePara.textContent = 'Use this Amazon voucher code to treat yourself to something special!';
+        }
+    });
+    
     cutCakeBtn.addEventListener('click', function() {
         // Animate the knife
         knife.style.display = 'block';
@@ -64,6 +94,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     revealGiftBtn.addEventListener('click', function() {
+        const giftContainer = document.getElementById('giftContainer');
+        
+        // Clear any existing content
+        giftContainer.innerHTML = '';
+        
+        // Create and add new elements
+        const messagePara = document.createElement('p');
+        messagePara.textContent = "Here's a small token of our appreciation:";
+        giftContainer.appendChild(messagePara);
+        
+        const voucherDiv = document.createElement('div');
+        voucherDiv.className = 'voucher';
+        voucherDiv.id = 'voucherCode';
+        voucherDiv.textContent = VOUCHER_CODE; // Using the code from secrets.js
+        giftContainer.appendChild(voucherDiv);
+        
+        const notePara = document.createElement('p');
+        notePara.className = 'note';
+        notePara.textContent = 'Use this Amazon voucher code to treat yourself to something special!';
+        giftContainer.appendChild(notePara);
+        
         // Show the gift container with animation
         giftContainer.classList.add('show');
         
@@ -71,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
         revealGiftBtn.textContent = 'Gift Revealed!';
         revealGiftBtn.disabled = true;
         revealGiftBtn.style.backgroundColor = '#27ae60';
-        revealGiftBtn.classList.remove('pulse');
         
         // Add confetti effect
         createConfetti();
