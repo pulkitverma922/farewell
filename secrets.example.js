@@ -1,1 +1,1 @@
-secrets.js
+const VOUCHER_CODE = "YOUR-ACTUAL-VOUCHER-CODE-HERE"; 
