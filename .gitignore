@@ -1,5 +1,5 @@
 # Ignore secrets file
-secrets.js
+secret.js
 
 # Other common files to ignore
 .DS_Store
