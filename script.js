@@ -12,36 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     knife.className = 'knife';
     cakeContainer.appendChild(knife);
     
-    // Create gift container content
-    const messagePara = document.createElement('p');
-    messagePara.textContent = "Here's a small token of our appreciation:";
-    giftContainer.appendChild(messagePara);
-    
-    // Create voucher div
-    const voucherDiv = document.createElement('div');
-    voucherDiv.className = 'voucher';
-    voucherDiv.id = 'voucherCode';
-    // Initial hidden state
-    voucherDiv.textContent = '🎁 Click to Reveal Your Gift 🎁';
-    giftContainer.appendChild(voucherDiv);
-    
-    // Create note paragraph
-    const notePara = document.createElement('p');
-    notePara.className = 'note';
-    notePara.textContent = 'Click above to reveal your Amazon voucher!';
-    giftContainer.appendChild(notePara);
-    
-    // Add click event to voucher
-    voucherDiv.addEventListener('click', function() {
-        if (!this.classList.contains('revealed')) {
-            // You can encode/decode the voucher code for additional obscurity
-            const code = atob('QU1aTi1HSUZULTI='); // Example encoded string
-            this.textContent = code;
-            this.classList.add('revealed');
-            notePara.textContent = 'Use this Amazon voucher code to treat yourself to something special!';
-        }
-    });
-    
     cutCakeBtn.addEventListener('click', function() {
         // Animate the knife
         knife.style.display = 'block';
@@ -107,7 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const voucherDiv = document.createElement('div');
         voucherDiv.className = 'voucher';
         voucherDiv.id = 'voucherCode';
-        voucherDiv.textContent = VOUCHER_CODE; // Using the code from secrets.js
+        // Use the VOUCHER_CODE from secrets.js that's created by GitHub Actions
+        voucherDiv.textContent = VOUCHER_CODE;
         giftContainer.appendChild(voucherDiv);
         
         const notePara = document.createElement('p');
@@ -204,7 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function createCakeCrumbs() {
-        // Colors for different parts of the cake
         const colors = ['#f39c12', '#e67e22', '#f1c40f', '#e74c3c', '#c0392b'];
         
         for (let i = 0; i < 40; i++) {
@@ -214,23 +184,20 @@ document.addEventListener('DOMContentLoaded', function() {
             crumb.style.height = crumb.style.width;
             crumb.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             
-            // Different shapes for crumbs
             if (Math.random() > 0.7) {
                 crumb.style.borderRadius = '50%';
             } else {
                 crumb.style.borderRadius = Math.random() * 5 + 2 + 'px';
             }
             
-            // Position crumbs along the cut line
             crumb.style.left = 30 + Math.random() * 30 + 'px';
             crumb.style.top = Math.random() * 100 + 'px';
             cakeContainer.appendChild(crumb);
             
-            // Physics-based animation
             const xVelocity = (Math.random() - 0.5) * 150;
             const yVelocity = (Math.random() - 0.3) * 100;
             const gravity = 300;
-            const rotationSpeed = Math.random() * 1080 - 540; // -540 to 540 degrees
+            const rotationSpeed = Math.random() * 1080 - 540;
             const duration = 0.8 + Math.random() * 1.2;
             
             const keyframes = [];
@@ -263,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const sparkle = document.createElement('div');
             sparkle.className = 'sparkle';
             
-            // Position sparkles along the cut line
             sparkle.style.left = 30 + Math.random() * 30 + 'px';
             sparkle.style.top = Math.random() * 100 + 'px';
             cakeContainer.appendChild(sparkle);
@@ -299,7 +265,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const confetti = document.createElement('div');
             confetti.className = 'confetti-particle';
             
-            // Random confetti shapes
             if (Math.random() > 0.5) {
                 confetti.style.borderRadius = '50%';
             } else {
@@ -331,4 +296,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }, animDuration * 1000);
         }
     }
-}); 
+});
