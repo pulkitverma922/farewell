@@ -43,7 +43,8 @@ jobs:
       # Create secrets.js file
       - name: Create secrets.js
         run: |
-          echo "const VOUCHER_CODE = '${{ secrets.VOUCHER_CODE }}';" > secrets.js
+          echo "const VOUCHER_CODE = '${{ secrets.VOUCHER_CODE }}';
+          window.VOUCHER_CODE = VOUCHER_CODE;" > secrets.js
           
       - name: Setup Pages
         uses: actions/configure-pages@v5
