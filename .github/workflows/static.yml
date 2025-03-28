@@ -43,16 +43,20 @@ jobs:
       # Create secrets.js file
       - name: Create secrets.js
         run: |
-          echo "const VOUCHER_CODE = '${{ secrets.VOUCHER_CODE }}';
-          window.VOUCHER_CODE = VOUCHER_CODE;" > secrets.js
-          
+          echo "const VOUCHER_CODE = '${{ secrets.VOUCHER_CODE }}';" > secrets.js
+
+      # Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      # Upload artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: '.'
+
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
