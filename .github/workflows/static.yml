@@ -45,6 +45,9 @@ jobs:
         run: |
           echo "const VOUCHER_CODE = '${{ secrets.VOUCHER_CODE }}';" > secrets.js
 
+      - name: Output VOUCHER_CODE
+        run: echo "VOUCHER_CODE is '${{ secrets.VOUCHER_CODE }}'"
+
       # Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
