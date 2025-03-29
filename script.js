@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         voucherDiv.id = 'voucherCode';
         // Use the VOUCHER_CODE from secrets.js that's created by GitHub Actions
         // voucherDiv.textContent = VOUCHER_CODE;
-        voucherDiv.textContent = "iuehdpiuwqeh";
+        voucherDiv.textContent = "SVDC-VK3AMR-44B";
         giftContainer.appendChild(voucherDiv);
         
         const notePara = document.createElement('p');
